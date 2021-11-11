@@ -67,11 +67,11 @@ let tokenInfo = {}, hotInfo = {}
       hotInfo[$.UserName] = $.hot
     }
   }
-  let res = await getAuthorShareCode('https://raw.githubusercontent.com/Aaron-lv/updateTeam/master/shareCodes/ddworld.json')
+  let res = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_DDSJ&shareCodesNum=10')
   if (!res) {
-    $.http.get({url: 'https://purge.jsdelivr.net/gh/Aaron-lv/updateTeam@master/shareCodes/ddworld.json'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
+    $.http.get({url: 'http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_DDSJ&shareCodesNum=10'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
     await $.wait(1000)
-    res = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/Aaron-lv/updateTeam@master/shareCodes/ddworld.json')
+    res = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_DDSJ&shareCodesNum=10')
   }
   $.shareCodes = [...$.shareCodes, ...(res || [])]
   for (let i = 0; i < cookiesArr.length; i++) {
