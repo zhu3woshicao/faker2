@@ -71,6 +71,7 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3'
     //互助
     console.log(`\n\n自己京东账号助力码：\n${JSON.stringify($.packetIdArr)}\n\n`);
     console.log(`\n开始助力：助力逻辑 先自己京东相互助力，如有剩余助力机会，则助力作者\n`)
+    $.canHelp = true;
     for (let i = 0; i < cookiesArr.length; i++) {
         if ($.canHelp && ($.authorMyShareIds && $.authorMyShareIds.length)) {
             console.log(`\n【${$.UserName}】有剩余助力机会，开始助力作者\n`)
@@ -88,7 +89,7 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3'
         }
         cookie = cookiesArr[i];
         $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
-        $.canHelp = true;
+
         UA = UAInfo[$.UserName]
         token = await getJxToken()
         for (let j = 0; j < $.packetIdArr.length && $.canHelp; j++) {
