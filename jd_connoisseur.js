@@ -66,7 +66,7 @@ let allMessage = '';
       await jdConnoisseur()
     }
   }
-  $.shareCodes = [...$.shareCodes, ...(res || [])]
+  $.shareCodes = [...(res || []), ...$.shareCodes]
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
