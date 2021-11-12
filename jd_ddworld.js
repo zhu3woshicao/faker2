@@ -68,12 +68,7 @@ let tokenInfo = {}, hotInfo = {}
     }
   }
   let res = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_DDSJ&shareCodesNum=10')
-  if (!res) {
-    $.http.get({url: 'http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_DDSJ&shareCodesNum=10'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
-    await $.wait(1000)
-    res = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_DDSJ&shareCodesNum=10')
-  }
-  $.shareCodes = [...$.shareCodes, ...(res || [])]
+  $.shareCodes = [...(res || []), ...$.shareCodes]
   for (let i = 0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
     $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
