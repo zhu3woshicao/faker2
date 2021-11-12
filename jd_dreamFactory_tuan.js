@@ -79,33 +79,7 @@ if ($.isNode()) {
   //打乱CK,再进行参团
   if (!Array.prototype.derangedArray) {Array.prototype.derangedArray = function() {for(var j, x, i = this.length; i; j = parseInt(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);return this;};}
   cookiesArr.derangedArray();
-  for (let i = 0; i < cookiesArr.length && $.tuanIds.length>0; i++) {
-    if (cookiesArr[i]) {
-      $.index = i + 1;
-      cookie = cookiesArr[i];
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
-      // if($.jdFactoryHelpList[$.UserName]){
-      //   console.log(`${$.UserName},参团次数已用完`)
-      //   continue;
-      // }
-      $.isLogin = true;
-      $.canHelp = true;//能否参团
-      await TotalBean();
-      if (!$.isLogin) {continue;}
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
-      if ((cookiesArr && cookiesArr.length >= ($.tuanNum || 5)) && $.canHelp) {
-        for (let j = 0; j < $.tuanIds.length; j++) {
-          let item = $.tuanIds[j];
-          $.tuanMax = false;
-          if (!$.canHelp) break;
-          console.log(`账号${$.UserName} 去参加团 ${item}`);
-          await JoinTuan(item);
-          await $.wait(2000);
-          if($.tuanMax){$.tuanIds.shift();j--;}
-        }
-      }
-    }
-  }
+
   let res = [];
   if(helpFlag){
     res = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_JXGC_TUAN&shareCodesNum=10');
@@ -129,6 +103,33 @@ if ($.isNode()) {
       }
     }
   }
+    for (let i = 0; i < cookiesArr.length && $.tuanIds.length>0; i++) {
+        if (cookiesArr[i]) {
+            $.index = i + 1;
+            cookie = cookiesArr[i];
+            $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
+            // if($.jdFactoryHelpList[$.UserName]){
+            //   console.log(`${$.UserName},参团次数已用完`)
+            //   continue;
+            // }
+            $.isLogin = true;
+            $.canHelp = true;//能否参团
+            await TotalBean();
+            if (!$.isLogin) {continue;}
+            $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
+            if ((cookiesArr && cookiesArr.length >= ($.tuanNum || 5)) && $.canHelp) {
+                for (let j = 0; j < $.tuanIds.length; j++) {
+                    let item = $.tuanIds[j];
+                    $.tuanMax = false;
+                    if (!$.canHelp) break;
+                    console.log(`账号${$.UserName} 去参加团 ${item}`);
+                    await JoinTuan(item);
+                    await $.wait(2000);
+                    if($.tuanMax){$.tuanIds.shift();j--;}
+                }
+            }
+        }
+    }
 })().catch((e) => {$.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')}).finally(() => {$.done();});
 
 async function jdDreamFactoryTuan() {try {await userInfo();await tuanActivity();} catch (e) {$.logErr(e);}}
