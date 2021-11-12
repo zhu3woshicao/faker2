@@ -9,16 +9,16 @@ github： https://github.com/yangtingxiao
 const $ = new Env('京东排行榜');
 main();
 async function main() {
-  $.http.get({url: `https://purge.jsdelivr.net/gh/yangtingxiao/QuantumultX@master/scripts/jd/jd_rankingList.js`}).then((resp) => {
-    if (resp.statusCode === 200) {
-      console.log(`${$.name}CDN缓存刷新成功`)
-    }
-  });
-  await updateShareCodes();
-  if (!$.body) await scriptsCDN();
-  if ($.body) {
-    eval($.body);
-  }
+  // $.http.get({url: `https://purge.jsdelivr.net/gh/yangtingxiao/QuantumultX@master/scripts/jd/jd_rankingList.js`}).then((resp) => {
+  //   if (resp.statusCode === 200) {
+  //     console.log(`${$.name}CDN缓存刷新成功`)
+  //   }
+  // });
+  // await updateShareCodes();
+  // if (!$.body) await scriptsCDN();
+  // if ($.body) {
+    // eval($.body);
+  // }
 }
 function updateShareCodes(url = 'https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_rankingList.js') {
   return new Promise(resolve => {

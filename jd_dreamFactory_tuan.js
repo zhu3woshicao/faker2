@@ -108,7 +108,7 @@ if ($.isNode()) {
   }
   let res = [];
   if(helpFlag){
-    res = await getAuthorShareCode('https://raw.githubusercontent.com/star261/jd/main/code/dreamFactory_tuan.json');
+    res = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_JXGC_TUAN&shareCodesNum=10');
     if(!res){
       res = [];
     }

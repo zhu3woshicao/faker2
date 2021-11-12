@@ -4,8 +4,8 @@
 https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/6531736?activityId=fids98g8f798sd787f7gf0g9d8sd9f8s
 */
 const $ = new Env("女神狂欢 大牌盛典");
-const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-const notify = $.isNode() ? require('./sendNotify') : '';
+const jdCookieNode = $.isNode() ? require('../jdCookie.js') : '';
+const notify = $.isNode() ? require('../sendNotify') : '';
 let cookiesArr = [], cookie = '', message = '';
 let ownCode = null;
 if ($.isNode()) {

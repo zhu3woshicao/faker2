@@ -312,10 +312,7 @@ function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
     $.get({
-      url: `https://cdn.nz.lu/api/sgmh/${randomCount}`,
-      headers: {
-        'Host':'api.jdsharecode.xyz'
-      },
+      url: `http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_SGMH&shareCodesNum=${randomCount}`,
       timeout: 10000
     }, (err, resp, data) => {
       try {

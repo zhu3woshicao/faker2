@@ -3,8 +3,8 @@
 https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/3444910?activityId=8d98g98f8dg8d7s6df7svysd9g7fd88d
 */
 const $ = new Env("礼惠国庆 大牌欢乐购");
-const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-const notify = $.isNode() ? require('./sendNotify') : '';
+const jdCookieNode = $.isNode() ? require('../jdCookie.js') : '';
+const notify = $.isNode() ? require('../sendNotify') : '';
 let cookiesArr = [], cookie = '', message = '';
 let ownCode = null;
 if ($.isNode()) {
