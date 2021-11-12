@@ -51,11 +51,6 @@ let allMessage = '';
   }
   await requireConfig()
   $.authorCode = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_QDLXJ&shareCodesNum=10')
-  if (!$.authorCode) {
-    $.http.get({url: 'http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_QDLXJ&shareCodesNum=10'}).then((resp) => {}).catch((e) => $.log('刷新CDN异常', e));
-    await $.wait(1000)
-    $.authorCode = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_QDLXJ&shareCodesNum=10') || []
-  }
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
