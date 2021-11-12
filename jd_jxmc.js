@@ -60,7 +60,7 @@ let token ='';
     await $.wait(2000);
   }
   console.log('\n##################开始账号内互助(红包)#################\n');
-  await getShareCode('jxmc_hb.json')
+  await getShareCode('hb')
   $.inviteCodeList_hb = [...($.inviteCodeList_hb || []), ...($.shareCode || [])]
   for(let i = 0;i<$.helpCkList.length;i++){
     $.can_help = true
@@ -79,7 +79,7 @@ let token ='';
   }
   console.log('\n##################开始账号内互助#################\n');
   $.shareCode = undefined
-  await getShareCode('jxmc.json')
+  await getShareCode('zl')
   let newCookiesArr = [];
   for(let i = 0;i<$.helpCkList.length;i+=4){
     newCookiesArr.push($.helpCkList.slice(i,i+4))
@@ -124,10 +124,10 @@ let token ='';
       $.done();
     })
 
-function getShareCode() {
+function getShareCode(type) {
   return new Promise(resolve => {
     $.get({
-      url: "http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_JXMC&shareCodesNum=10",
+      url: `http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_JXMC&shareCodesNum=10&type=` + type,
     }, async (err, resp, data) => {
       try {
         if (err) {
