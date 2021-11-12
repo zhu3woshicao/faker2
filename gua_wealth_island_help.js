@@ -81,9 +81,8 @@ $.appId = 10032;
   let getShareNums = 0
   if (HelpAuthorFlag) {
     let res2 = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_CFDL&shareCodesNum=10');
-    getShareNums = [...res2, ...res].length >= getShareNum ? getShareNum : [...res, ...res2].length
-    $.innerInviteLists = getRandomArrayElements([...res, ...res2], [...res, ...res2].length >= getShareNum ? getShareNum : [...res, ...res2].length );
-    $.InviteLists.push(...$.InviteList,...$.innerInviteList,...$.innerInviteLists);
+    $.innerInviteLists = res2
+    $.InviteLists.push(...$.innerInviteLists, ...$.InviteList, ...$.innerInviteList,);
   }else{
     $.InviteLists.push(...$.InviteList);
   }
