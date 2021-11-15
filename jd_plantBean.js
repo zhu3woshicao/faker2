@@ -106,7 +106,7 @@ async function jdPlantBean() {
       // ***************************
       // 报告运行次数
       $.get({
-        url: `http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_PLANT_BEAN&shareCodesNum=10`,
+        url: `https://api.jdsharecode.xyz/api/runTimes?activityId=bean&sharecode=${$.myPlantUuid}`,
         timeout: 10000
       }, (err, resp, data) => {
         if (err) {
@@ -556,7 +556,7 @@ async function plantBeanIndex() {
 }
 function readShareCode() {
   return new Promise(async resolve => {
-    $.get({url: `https://cdn.nz.lu/api/bean/${randomCount}`, headers:{'Host':'api.jdsharecode.xyz'}, timeout: 10000}, (err, resp, data) => {
+    $.get({url: `http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_PLANT_BEAN&shareCodesNum=${randomCount}`, timeout: 10000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
