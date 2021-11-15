@@ -229,3 +229,5 @@
 1 6,7 * * * python3 /jd/scripts/jd_zqfl.py >> /jd/log/jd_zqfl.log 2>&1
 #
 59 23 * * * python3 /jd/scripts/jd_blueCoin.py >> /jd/log/jd_blueCoin.log 2>&1
+#锦鲤红包
+3 0 * * * node /scripts/jd_koiHelp.js >> /jd/log/jd_koiHelp 2>&1
