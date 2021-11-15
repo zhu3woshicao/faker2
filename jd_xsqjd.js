@@ -32,18 +32,9 @@ let autoCode = '',projectId = '',helpId = '';
         return;
     }
     let res = [];
-    try{res = await getAuthorShareCode('https://raw.githubusercontent.com/lsh26/share_code/main/shop.json');}catch (e) {}
-    if(!res){
-        try{res = await getAuthorShareCode('https://raw.fastgit.org/lsh26/share_code/main/shop.json');}catch (e) {}
-        if(!res){res = [];}
-    }
-    let res2 = [];
-    try{res2 = await getAuthorShareCode('https://raw.githubusercontent.com/zero205/updateTeam/main/shareCodes/shop.json');}catch (e) {}
-    if(!res2){
-        try{res2 = await getAuthorShareCode('https://raw.fastgit.org/zero205/updateTeam/main/shareCodes/shop.json');}catch (e) {}
-        if(!res2){res2 = [];}
-    }
-    res = [...res,...res2]
+    // try{res = await getAuthorShareCode('https://raw.githubusercontent.com/lsh26/share_code/main/shop.json');}catch (e) {}
+
+    // res = [...res,...res2]
     if(res.length > 0){
         autoCode = getRandomArrayElements(res,1)[0];
     }
