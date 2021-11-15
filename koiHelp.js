@@ -59,7 +59,7 @@ let shareCodes = [];
 
 async function help(){
     let pool = await readShareCode();
-    shareCodes = [...(pool.data), ...shareCodes];
+    shareCodes = [...(pool), ...shareCodes];
     console.log(`\n******开始助力: 先互助池，再内部互助******\n`);
     for (let i = 0; i < cookiesArr.length; i++) {
         cookie = cookiesArr[i]
