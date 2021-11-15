@@ -620,7 +620,7 @@ function readShareCode() {
     $.get({url: `http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_DDFACTORY&shareCodesNum=${randomCount}`, timeout: 10000}, (err, resp, data) => {
       try {
         if (err) {
-          console.log(`${JSON.stringify(err)}`)
+          console.log(JSON.stringify(err))
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           if (data) {

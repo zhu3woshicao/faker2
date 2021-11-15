@@ -32,7 +32,6 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
 //助力好友分享码(最多3个,否则后面的助力失败)
 //此此内容是IOS用户下载脚本到本地使用，填写互助码的地方，同一京东账号的好友互助码请使用@符号隔开。
 //下面给出两个账号的填写示例（iOS只支持2个京东账号）
-// todo...
 let shareCodes = [ // IOS本地脚本用户这个列表填入你要助力的好友的shareCode
     '7lywqyfcues3xxl36eotc3whgu5ac3f4ijdgqji'
 ]
@@ -102,23 +101,6 @@ async function jdPlantBean() {
       const shareUrl = $.plantBeanIndexResult.data.jwordShareInfo.shareUrl
       $.myPlantUuid = getParam(shareUrl, 'plantUuid')
       console.log(`\n【京东账号${$.index}（${$.UserName}）的${$.name}好友互助码】${$.myPlantUuid}\n`);
-
-      // ***************************
-      // 报告运行次数
-      $.get({
-        url: `https://api.jdsharecode.xyz/api/runTimes?activityId=bean&sharecode=${$.myPlantUuid}`,
-        timeout: 10000
-      }, (err, resp, data) => {
-        if (err) {
-          console.log('上报失败', err)
-        } else {
-          if (data === '1' || data === '0') {
-            console.log('上报成功')
-          }
-        }
-      })
-      // ***************************
-
       roundList = $.plantBeanIndexResult.data.roundList;
       currentRoundId = roundList[num].roundId;//本期的roundId
       lastRoundId = roundList[num - 1].roundId;//上期的roundId
@@ -559,7 +541,7 @@ function readShareCode() {
     $.get({url: `http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_PLANT_BEAN&shareCodesNum=${randomCount}`, timeout: 10000}, (err, resp, data) => {
       try {
         if (err) {
-          console.log(`${JSON.stringify(err)}`)
+          console.log(JSON.stringify(err))
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           if (data) {
