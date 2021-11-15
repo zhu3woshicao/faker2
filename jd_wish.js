@@ -68,7 +68,7 @@ if ($.isNode()) {
       }
     }
   }
-  let res = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_CFDL&shareCodesNum=10')
+  let res = await getAuthorShareCode('http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_WISH&shareCodesNum=10')
   $.shareCode = [...$.shareCode, ...(res || [])]
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {

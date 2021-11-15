@@ -189,7 +189,7 @@ function requireConfig() {
 
     try {
       let options = {
-        "url": `http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_CFDL&shareCodesNum=10`,
+        "url": `http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_JXNC&shareCodesNum=10`,
         "headers": {
           "Accept": "application/json,text/plain, */*",
           "Content-Type": "application/x-www-form-urlencoded",
