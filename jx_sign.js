@@ -109,6 +109,9 @@ if ($.isNode()) {
       UA = UAInfo[$.UserName]
       await signhb(2)
       await $.wait(2000)
+      await getShareCode()
+      console.log("获取cc的助力:", ...$.ccShareCode)
+      $.shareCodes = [...$.ccShareCode, $.shareCodes]
       if ($.canHelp) {
         if ($.shareCodes && $.shareCodes.length) {
           console.log(`\n开始内部互助\n`)
@@ -166,6 +169,32 @@ if ($.isNode()) {
   .finally(() => {
     $.done();
   })
+
+
+function getShareCode() {
+    return new Promise(resolve => {
+        $.get({
+            url: "http://119.29.240.238/jd/shareCodes.php?shareCodeType=JD_SHARES_JXQD&shareCodesNum=10",
+            headers: {
+                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
+            }
+        }, async (err, resp, data) => {
+            try {
+                if (err) {
+                    console.log(`${JSON.stringify(err)}`);
+                    console.log(`${$.name} API请求失败，请检查网路重试`);
+                } else {
+                    console.log(`帮【cc】助力`);
+                    $.ccShareCode = JSON.parse(data);
+                }
+            } catch (e) {
+                $.logErr(e, resp)
+            } finally {
+                resolve();
+            }
+        })
+    })
+}
 
 // 查询信息
 function signhb(type = 1) {
